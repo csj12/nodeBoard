@@ -132,6 +132,14 @@ a:hover{
     /* padding-top: 20px; */
 }
 
+#contentsDetail{
+    height: 500px;
+    width: 1200px;
+    position: relative;
+    /* margin: 0 -10px;  */
+    /* padding-top: 20px; */
+}
+
 #contents .news {
     position: relative;
     float: left;
@@ -314,6 +322,18 @@ footer .sns {
     float: right;
     margin-left: 8px;
 
+}
+
+.pageArea{
+    text-align: center;
+    padding-top: 15px;
+}
+
+.boardArea{
+    height: 450px;
+    padding: 5px;
+    border-bottom: 1px solid rgb(203, 210, 212);
+    border-radius: 3px;
 }
 
 .bg{

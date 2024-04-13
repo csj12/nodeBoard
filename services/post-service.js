@@ -8,10 +8,7 @@ async function writePost(collection, post) {
 }
 
 async function board(collection, page, search) {
-  console.log("collection:"+collection);
-  console.log("page:"+page);
-  console.log("search:"+search);
-  const perPage = 3;
+  const perPage = 10;
   const query = { title: new RegExp(search, "i") };
   const cursor = collection
     .find(query, { limit: perPage, skip: (page - 1) * perPage })
@@ -20,23 +17,8 @@ async function board(collection, page, search) {
     });
   const totalCount = await collection.count(query);
   const posts = await cursor.toArray();
-  console.log("posts:"+posts);
   const paginatorObj = paginator({ totalCount, page, perPage: perPage });
   return [posts, paginatorObj];
-}
-
-async function notice(collection, page) {
-  const perPage = 3;
-  const query = { title: new RegExp('', "i") };
-  const cursor = collection
-    .find(query, { limit: perPage, skip: (page - 1) * perPage })
-    .sort({
-      createdDt: -1,
-    });
-  const totalCount = await collection.count(query);
-  const notice = await cursor.toArray();
-  const paginatorObj = paginator({ totalCount, page, perPage: perPage });
-  return [notice, paginatorObj];
 }
 
 const projectionOption = {
@@ -80,7 +62,6 @@ async function updatePost(collection, id, post) {
 
 module.exports = {
   board,
-  notice,
   writePost,
   getDetailPost,
   getPostById,

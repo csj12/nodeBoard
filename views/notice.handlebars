@@ -1,0 +1,15 @@
+<div id="contentsDetail">
+  {{#with notice}} 
+  <div>
+    작성자 :<b>{{writer}}</b> <!-- 작성자 -->
+  </div>
+  <div>
+    조회수 : {{hits}} | 작성일시 : {{dateString createdDt}} <!-- 조회수 및 작성일 -->
+    {{!-- <button onclick="modifyPost()">수정</button>
+    <button onclick="deletePost()">삭제</button> --}}
+  </div>
+  <div>
+    <pre>{{content}}</pre> <!-- 본문 내용 -->
+  </div>
+  {{/with}}
+</div>

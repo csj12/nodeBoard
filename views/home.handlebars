@@ -1,55 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/jquery-1.12.3.js"></script>
-
-</head>
-<body>
-    <div id="wrap">
-        <header id="header" class="clear-fix">
-            <h1 class="logo"><a href="#"><img src="../images/footerLogo.png" alt="just쇼핑몰"></a></h1>
-            <nav class="gnb">
-                <ul class="mainMenu">
-                    <li><a href="#" class="on">탑</a>
-                        <ul>
-                            <li><a href="#">블라우스</a></li>
-                            <li><a href="#">티</a></li>
-                            <li><a href="#">셔츠</a></li>
-                            <li><a href="#">니트</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">팬츠</a>
-                        <ul>
-                            <li><a href="#">청바지</a></li>
-                            <li><a href="#">티바지</a></li>
-                            <li><a href="#">긴바지</a></li>
-                            <li><a href="#">반바지</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">도구</a>
-                        <ul>
-                            <li><a href="#">블라우스</a></li>
-                            <li><a href="#">티</a></li>
-                            <li><a href="#">셔츠</a></li>
-                            <li><a href="#">니트</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">악세사리</a>
-                        <ul>
-                            <li><a href="#">귀고리</a></li>
-                            <li><a href="#">목걸이</a></li>
-                            <li><a href="#">반지</a></li>
-                            <li><a href="#">팔찌</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
         <section id="slide">
             <h2 class="blind">just쇼핑몰</h2>
             <ul class="clear-fix">
@@ -58,62 +6,31 @@
                 <li><img src="../images/slide3.png" id="slider" alt="4ed3tv"></li>
             </ul>
         </section>
-        <div id="contents" class="clear-fix">
-            <section class="news">
-                <h2 class="title on">공지사항</h2>
-                <ul class="notice">
-                  {{#each notice}}
-                    <li><a href="/detail/{{_id}}">{{content}}</a><span>{{date}}</span></li>
-                    {{!-- <li><a href="#" class="on">dsflkjaegfjeglegdshkewklg</a></li>
-                    <li><a href="#">dsflkjaegfjeglegdshkewklgadlkhgdaslkghdkslgghk</a></li>
-                    <li><a href="#">dsflkjaegfjeglegdshkewklgadlkhgdaslkghdkslgghk</a></li> --}}
-                  {{/each}}
-                </ul>
-                <h2 class="title">갤러리</h2>
-                <ul class="gallery">
-                    <li><a href="#"><img src="../images/gallery1.gif" alt=""></a></li>
-                    <li><a href="#"><img src="../images/gallery2.gif" alt=""></a></li>
-                    <li><a href="#"><img src="../images/gallery3.gif" alt=""></a></li>
-                </ul>
-            </section>
-            <section class="banner">
-                <h2 class="title on">배너</h2>
-                <p class="banner_content">
-                    <img src="../images/banner.jpg" alt="">
-                </p>
-            </section>
-            <section class="quick">
-                <h2 class="title on">바로가기</h2>
-                <p class="quick_content">
-                    <a href="/board"><img src="../images/direct.jpg" alt=""></a>
-                </p>
-            </section>
-        </div>
-    </div>
-    <footer id="footer">
-        <p class="logo_bottom"><img src="../images/footerLogo.png" alt=""></p>
-        <ul class="sns">
-            <li><a href="#"><img src="../images/sns1.jpg" alt=""></a></li>
-            <li><a href="#"><img src="../images/sns2.jpg" alt=""></a></li>
-            <li><a href="#"><img src="../images/sns3.jpg" alt=""></a></li>
+<div id="contents" class="clear-fix">
+    <section class="news">
+        <h2 class="title on">공지사항</h2>
+        <ul class="notice">
+            {{#each notice}}
+            <li><a href="/notice/{{_id}}">{{title}}</a><span>{{date}}</span></li>
+            {{/each}}
         </ul>
-        <p class="copywright">copywright</p>
-    </footer>
-
-    <div class="bg">
-        <aside class="popup">
-            <h2 class="title">e0293twdlkgfh[</h2>
-            <p>skdfgjsedl;kgjwowghsdglkvlxc.</p>
-            <p>qru09ur2190u5219ru21r9u12ru219r]</p>
-            <p>eofhjf03t093gh0qghq0gh]q0wgh]0eh</p>
-            <ul>
-                <li>r0210[r5921rh210rh201rh20rh</li>
-                <li>r03th3f092hf290fh209h</li>
-                <p>20h5r12tr021htg9023ghf903gh9</p>
-                <button class="close">닫기</button>
-            </ul>
-        </aside>
-    </div>
-    <script src="../js/scripts.js"></script>
-</body>
-</html>
+        <h2 class="title">갤러리</h2>
+        <ul class="gallery">
+            <li><a href="#"><img src="../images/gallery1.gif" alt=""></a></li>
+            <li><a href="#"><img src="../images/gallery2.gif" alt=""></a></li>
+            <li><a href="#"><img src="../images/gallery3.gif" alt=""></a></li>
+        </ul>
+    </section>
+    <section class="banner">
+        <h2 class="title on">배너</h2>
+        <p class="banner_content">
+            <img src="../images/banner.jpg" alt="">
+        </p>
+    </section>
+    <section class="quick">
+        <h2 class="title on">바로가기</h2>
+        <p class="quick_content">
+            <a href="/board"><img src="../images/direct.jpg" alt=""></a>
+        </p>
+    </section>
+</div>
