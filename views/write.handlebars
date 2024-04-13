@@ -1,101 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/jquery-1.12.3.js"></script>
 
-</head>
-<body>
-    <div id="wrap">
-        <header id="header" class="clear-fix">
-            <h1 class="logo"><a href="/"><img src="../images/footerLogo.png" alt="just쇼핑몰"></a></h1>
-            <nav class="gnb">
-                <ul class="mainMenu">
-                    <li><a href="#" class="on">탑</a>
-                        <ul>
-                            <li><a href="#">블라우스</a></li>
-                            <li><a href="#">티</a></li>
-                            <li><a href="#">셔츠</a></li>
-                            <li><a href="#">니트</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">팬츠</a>
-                        <ul>
-                            <li><a href="#">청바지</a></li>
-                            <li><a href="#">티바지</a></li>
-                            <li><a href="#">긴바지</a></li>
-                            <li><a href="#">반바지</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">도구</a>
-                        <ul>
-                            <li><a href="#">블라우스</a></li>
-                            <li><a href="#">티</a></li>
-                            <li><a href="#">셔츠</a></li>
-                            <li><a href="#">니트</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">악세사리</a>
-                        <ul>
-                            <li><a href="#">귀고리</a></li>
-                            <li><a href="#">목걸이</a></li>
-                            <li><a href="#">반지</a></li>
-                            <li><a href="#">팔찌</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <section id="slide">
-            <h2 class="blind">just쇼핑몰</h2>
-            <ul class="clear-fix">
-                <li><img src="../images/slide1.png" id="slider" alt="dsjgklakdg"></li>
-                <li><img src="../images/slide2.png" id="slider" alt="2424er"></li>
-                <li><img src="../images/slide3.png" id="slider" alt="4ed3tv"></li>
-            </ul>
-        </section>
-        <!-- ❶ mode에 따라 문구 변경 -->
-        <h1>[{{title}}] 글 {{#if (eq mode "create")}}작성{{else}}수정{{/if}}</h1>
-        <div>
-          <!-- ❷ mode에 따라 폼이 반영되는 URL 변경 -->
-          <form name="boardForm" method="post" {{#if (eq mode "create" )}}action="/write" {{else}}action="/modify" {{/if}}>
-            <!-- ❸ 수정 모드인 때는 id값을 폼통해 전송  -->
-            {{#if (eq mode "modify")}}
-            <input type="hidden" name="id" value="{{post._id}}" />
-            {{/if}}
-
-            <!-- ❹ 수정 모드인 경우 제목을 넣어줍니다.  -->
+        <div id="contentsDetail">
+            <!-- ❶ mode에 따라 문구 변경 -->
+            <h2>[{{title}}] 글 {{#if (eq mode "create")}}작성{{else}}수정{{/if}}</h2>
             <div>
-              <label>제목</label>
-              <input type="text" name="title" placeholder="제목을 넣어주세요" value="{{post.title}}" />
+                <!-- ❷ mode에 따라 폼이 반영되는 URL 변경 -->
+                <form name="boardForm" method="post" {{#if (eq mode "create" )}}action="/write" {{else}}action="/modify" {{/if}}>
+                    <!-- ❸ 수정 모드인 때는 id값을 폼통해 전송  -->
+                    {{#if (eq mode "modify")}}
+                    <input type="hidden" name="id" value="{{post._id}}" />
+                    {{/if}}
+
+                    <!-- ❹ 수정 모드인 경우 제목을 넣어줍니다.  -->
+                    <div>
+                    <label>제목</label>
+                    <input type="text" name="title" placeholder="제목을 넣어주세요" value="{{post.title}}" />
+                    </div>
+                    <!-- ❺ 수정 모드인 경우 이름을 넣어줍니다.  -->
+                    <div>
+                    <label>이름</label>
+                    <input type="text" name="writer" placeholder="이름을 넣어주세요" value="{{post.writer}}" />
+                    </div>
+
+                    <div>
+                    <label>비밀번호</label>
+                    <input type="password" name="password" placeholder="비밀번호를 넣어주세요" />
+                    </div>
+
+                    <!-- ❻ 수정 모드 인 경우 본문에 내용을 채워줍니다. -->
+                    <div>
+                    <label>본문을 입력하세요</label><br />
+                    <textarea placeholder="본문" name="content" cols="50" rows="10">{{post.content}}</textarea>
+                    <br />
+                    <!-- 버튼영역 -->
+                    <div>
+                        <button type="submit">저장</button>
+                        <button type="button" onclick="location.href='/board'">취소</button>
+                    </div>
+                </form>
             </div>
-            <!-- ❺ 수정 모드인 경우 이름을 넣어줍니다.  -->
-            <div>
-              <label>이름</label>
-              <input type="text" name="writer" placeholder="이름을 넣어주세요" value="{{post.writer}}" />
-            </div>
-
-            <div>
-              <label>비밀번호</label>
-              <input type="password" name="password" placeholder="비밀번호를 넣어주세요" />
-            </div>
-
-            <!-- ❻ 수정 모드 인 경우 본문에 내용을 채워줍니다. -->
-            <div>
-              <label>본문을 입력하세요</label><br />
-              <textarea placeholder="본문" name="content" cols="50" rows="10">{{post.content}}</textarea>
-              <br />
-              <!-- 버튼영역 -->
-              <div>
-                <button type="submit">저장</button>
-                <button type="button" onclick="location.href='/board'">취소</button>
-              </div>
-          </form>
         </div>
-    <script src="../js/scripts.js"></script>
-  </body>
-</html>

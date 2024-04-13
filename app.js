@@ -36,6 +36,7 @@ app.get("/notice/:id", async (req, res) => {
   // 게시글 정보 가져오기
   const result = await noticeService.getDetailNotice(noticecollection, req.params.id);
   res.render("notice", {
+    title: "공지 사항",
     notice: result.value,
   });
 });
@@ -47,15 +48,15 @@ app.get("/board", async (req, res) => {
     // postService.list에서 글리스트와 페이지네이터를 가져옴
     const [posts, paginator] = await postService.board(postCollection, page, search);
     // 리스트 페이지 렌더링
-    res.render("board", { title: "테스트 게시판",search, paginator, posts });
+    res.render("board", { title: "자유 게시판",search, paginator, posts });
   } catch (error) {
     console.error(error);
-    res.render("board", { title: "테스트 게시판" }); // 에러가 나는 경우는 빈값으로 렌더링
+    res.render("board", { title: "자유 게시판" }); // 에러가 나는 경우는 빈값으로 렌더링
   }
 });
 
 app.get("/write", (req, res) => {
-  res.render("write", { title: "테스트 게시판", mode: "create" });
+  res.render("write", { title: "자유 게시판", mode: "create" });
 });
 
 app.post("/write", async (req, res) => {
@@ -68,7 +69,7 @@ app.get("/detail/:id", async (req, res) => {
   // 게시글 정보 가져오기
   const result = await postService.getDetailPost(postCollection, req.params.id);
   res.render("detail", {
-    title: "테스트 게시판",
+    title: "자유 게시판",
     post: result.value,
   });
 });
@@ -94,7 +95,7 @@ app.get("/modify/:id", async (req, res) => {
   // getPostById()  함수로 게시글 데이터를 받아옴
   const post = await postService.getPostById(postCollection, req.params.id);
   console.log(post);
-  res.render("write", { title: "테스트 게시판 ", mode: "modify", post });
+  res.render("write", { title: "자유 게시판 ", mode: "modify", post });
 });
 
 // 게시글 수정 API
